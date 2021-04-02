@@ -5,6 +5,7 @@ class CarrierShip extends Entity {
     super(scene, x, y, "sprEnemy2", "CarrierShip");
     this.play("sprEnemy2");
     this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.setData("score", 10);
   }
 }
 
