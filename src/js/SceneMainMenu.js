@@ -1,15 +1,21 @@
 import Phaser from "phaser";
 import ScrollingBackground from "../entities/ScrollingBackground";
+
 import sprBtnPlay from "../files/sprBtnPlay.png";
 import sprBtnPlayHover from "../files/sprBtnPlayHover.png";
 import sprBtnPlayDown from "../files/sprBtnPlayDown.png";
 import sprBtnRestart from "../files/sprBtnRestart.png";
 import sprBtnRestartHover from "../files/sprBtnRestartHover.png";
 import sprBtnRestartDown from "../files/sprBtnRestartDown.png";
+import sprBg0 from "../files/sprBg0.png";
+import sprBg1 from "../files/sprBg1.png";
+
 //Sounds
 
 import sndBtnOver from "../files/sndBtnOver.mp3";
 import sndBtnDown from "../files/sndBtnDown.mp3";
+
+import song from "../files/spacetheme.mp3";
 
 class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -17,6 +23,8 @@ class SceneMainMenu extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image("sprBg0", sprBg0);
+    this.load.image("sprBg1", sprBg1);
     this.load.image("sprBtnPlay", sprBtnPlay);
     this.load.image("sprBtnPlayHover", sprBtnPlayHover);
     this.load.image("sprBtnPlayDown", sprBtnPlayDown);
@@ -25,14 +33,17 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.image("sprBtnRestartDown", sprBtnRestartDown);
     this.load.audio("sndBtnOver", sndBtnOver);
     this.load.audio("sndBtnDown", sndBtnDown);
+    this.load.audio("song", song);
   }
 
   create() {
     this.sfx = {
       btnOver: this.sound.add("sndBtnOver"),
       btnDown: this.sound.add("sndBtnDown"),
+      song: this.sound.add("song"),
     };
 
+    // this.sfx.song.play();
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
