@@ -103,6 +103,19 @@ class SceneMain extends Phaser.Scene {
       this.game.config.height * 0.5,
       "sprPlayer"
     );
+
+    this.scoreScene = this.add.text(
+      this.game.config.width * 0.025,
+      this.game.config.height * 0.925,
+      `Score: ${this.player.getData("score")}`,
+      {
+        color: "#d0c600",
+        fontFamily: "sans-serif",
+        fontSize: "3vw",
+        lineHeight: 1.3,
+      }
+    );
+
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -114,6 +127,55 @@ class SceneMain extends Phaser.Scene {
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
+
+    this.physics.add.collider(
+      this.playerLasers,
+      this.enemies,
+      (playerLaser, enemy) => {
+        if (enemy && !this.player.getData("isDead")) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          this.player.setScore(enemy.getData("score"));
+          enemy.explode(true);
+          playerLaser.destroy();
+        }
+      }
+    );
+
+    this.physics.add.overlap(
+      this.player,
+      this.enemies,
+      function (player, enemy) {
+        if (!player.getData("isDead") && !enemy.getData("isDead")) {
+          player.explode(false);
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          player.setScore(enemy.getData("score"));
+          player.onDestroy();
+          enemy.explode(true);
+        } else {
+          if (enemy.onDestroy !== undefined) {
+            player.setScore(enemy.getData("score"));
+            enemy.onDestroy();
+          }
+          enemy.explode(true);
+        }
+      }
+    );
+
+    this.physics.add.overlap(
+      this.player,
+      this.enemyLasers,
+      function (player, laser) {
+        if (!player.getData("isDead") && !laser.getData("isDead")) {
+          player.explode(false);
+          player.onDestroy();
+          laser.explode(true);
+        }
+      }
+    );
 
     this.time.addEvent({
       delay: 1000,
@@ -149,45 +211,12 @@ class SceneMain extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
-
-    this.physics.add.collider(
-      this.playerLasers,
-      this.enemies,
-      function (playerLaser, enemy) {
-        if (enemy) {
-          if (enemy.onDestroy !== undefined) {
-            enemy.onDestroy();
-          }
-          enemy.explode(true);
-          playerLaser.destroy();
-        }
-      }
-    );
-
-    this.physics.add.overlap(
-      this.player,
-      this.enemies,
-      function (player, enemy) {
-        if (!player.getData("isDead") && !enemy.getData("isDead")) {
-          player.explode(false);
-          enemy.explode(true);
-        }
-      }
-    );
-
-    this.physics.add.overlap(
-      this.player,
-      this.enemyLasers,
-      function (player, laser) {
-        if (!player.getData("isDead") && !laser.getData("isDead")) {
-          player.explode(false);
-          laser.explode(true);
-        }
-      }
-    );
   }
 
   update() {
+    this.player.update();
+    this.scoreScene.text = `Score: ${this.player.getData("score")}`;
+
     if (!this.player.getData("isDead")) {
       this.player.update();
       if (this.keyW.isDown) {
