@@ -1,9 +1,26 @@
 import axios from "axios";
 
+const craeteGame = async () => {
+  const game = {
+    name: "Star Wars new",
+  };
+
+  const dataGame = await axios
+    .post(
+      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/",
+      game
+    )
+    .then((response) => response);
+
+  console.log(dataGame);
+
+  return dataGame;
+};
+
 const userScore = async (userData) => {
   const data = await axios
     .post(
-      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/$xOwoSY152NCqczqPjpxw/scores/",
+      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/$G3cxwXD1OYTkCI4kaSNO/scores/",
       userData
     )
     .then((response) => {
@@ -11,11 +28,13 @@ const userScore = async (userData) => {
     })
     .catch((error) => error);
 
-  return data.result;
+  console.log(data, "userScore");
+
+  return data;
 };
 
 const setData = async (player, score) => {
-  const userData = { user: { name: player }, score: score };
+  const userData = { user: player, score: score };
   const message = await userScore(userData);
   return message;
 };
@@ -23,19 +42,18 @@ const setData = async (player, score) => {
 const getGameResult = async () => {
   const data = await axios
     .get(
-      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/$xOwoSY152NCqczqPjpxw/scores/"
+      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/$G3cxwXD1OYTkCI4kaSNO/scores/"
     )
-    .then((response) => response.data.result)
+    .then((response) => response.data)
     .catch((error) => error);
-
-  return data;
+  console.log(data.result, "userScoreResult");
+  return data.result;
 };
 
 const getData = async () => {
   const data = await getGameResult();
-  const dataS = data.sort((a, b) => (a.score > b.score ? 1 : -1));
-  console.log(dataS);
-  return dataS;
+  craeteGame();
+  return data.sort((a, b) => (a.score > b.score ? -1 : 1)).slice(0, 5);
 };
 
 export { setData, getData };
