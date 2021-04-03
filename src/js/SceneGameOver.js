@@ -4,9 +4,8 @@ import ScrollingBackground from "../entities/ScrollingBackground";
 import { getLocalScore } from "../helpers/storage";
 import { getData, setData } from "../helpers/api";
 
-import sprBtnRestart from "../files/sprBtnRestart.png";
-import sprBtnRestartHover from "../files/sprBtnRestartHover.png";
-import sprBtnRestartDown from "../files/sprBtnRestartDown.png";
+import sprBtnRestart from "../files/restrat.png";
+
 import sprBg0 from "../files/sprBg0.png";
 import sprBg1 from "../files/sprBg1.png";
 
@@ -22,8 +21,6 @@ class SceneGameOver extends Phaser.Scene {
     this.load.image("sprBg0", sprBg0);
     this.load.image("sprBg1", sprBg1);
     this.load.image("sprBtnRestart", sprBtnRestart);
-    this.load.image("sprBtnRestartHover", sprBtnRestartHover);
-    this.load.image("sprBtnRestartDown", sprBtnRestartDown);
     this.load.audio("sndBtnOver", sndBtnOver);
     this.load.audio("sndBtnDown", sndBtnDown);
   }
@@ -43,7 +40,7 @@ class SceneGameOver extends Phaser.Scene {
     this.btnRestart.on(
       "pointerover",
       function () {
-        this.btnRestart.setTexture("sprBtnRestartHover");
+        this.btnRestart.setTexture("sprBtnRestart");
         this.sfx.btnOver.play();
       },
       this
@@ -55,7 +52,7 @@ class SceneGameOver extends Phaser.Scene {
     this.btnRestart.on(
       "pointerdown",
       function () {
-        this.btnRestart.setTexture("sprBtnRestartDown");
+        this.btnRestart.setTexture("sprBtnRestart");
         this.sfx.btnDown.play();
       },
       this
@@ -82,18 +79,13 @@ class SceneGameOver extends Phaser.Scene {
       }
     );
 
-    this.title = this.add.text(
-      this.game.config.width * 0.5,
-      128,
-      "SPACE SHOOTER",
-      {
-        fontFamily: "monospace",
-        fontSize: 48,
-        fontStyle: "bold",
-        color: "#ffffff",
-        align: "center",
-      }
-    );
+    this.title = this.add.text(this.game.config.width * 0.5, 128, "GAME OVER", {
+      fontFamily: "monospace",
+      fontSize: 60,
+      fontStyle: "bold",
+      color: "#ffffff",
+      align: "center",
+    });
     this.title.setOrigin(0.5);
     this.btnRestart.setInteractive();
 
@@ -111,7 +103,7 @@ class SceneGameOver extends Phaser.Scene {
     div.innerHTML = `
     <input type='text' id='name' placeholder='Enter your name' style= 'font-size:1.5rem width: ${
       this.game.config.width * 0.25
-    }'</br>
+    }/'</br>
     <input type='button' name='submitBtn' value='Submit Score' style='font-size:1.5rem'/>
     `;
 
