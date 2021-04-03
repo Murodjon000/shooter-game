@@ -1,14 +1,11 @@
 import Phaser from "phaser";
 import ScrollingBackground from "../entities/ScrollingBackground";
 
-import sprBtnPlay from "../files/sprBtnPlay.png";
-import sprBtnPlayHover from "../files/sprBtnPlayHover.png";
-import sprBtnPlayDown from "../files/sprBtnPlayDown.png";
-import sprBtnRestart from "../files/sprBtnRestart.png";
-import sprBtnRestartHover from "../files/sprBtnRestartHover.png";
-import sprBtnRestartDown from "../files/sprBtnRestartDown.png";
 import sprBg0 from "../files/sprBg0.png";
 import sprBg1 from "../files/sprBg1.png";
+import playBtn from "../files/play.png";
+import aboutBtn from "../files/about.png";
+import recordsBtn from "../files/records.png";
 
 //Sounds
 
@@ -25,12 +22,9 @@ class SceneMainMenu extends Phaser.Scene {
   preload() {
     this.load.image("sprBg0", sprBg0);
     this.load.image("sprBg1", sprBg1);
-    this.load.image("sprBtnPlay", sprBtnPlay);
-    this.load.image("sprBtnPlayHover", sprBtnPlayHover);
-    this.load.image("sprBtnPlayDown", sprBtnPlayDown);
-    this.load.image("sprBtnRestart", sprBtnRestart);
-    this.load.image("sprBtnRestartHover", sprBtnRestartHover);
-    this.load.image("sprBtnRestartDown", sprBtnRestartDown);
+    this.load.image("playBtn", playBtn);
+    this.load.image("aboutBtn", aboutBtn);
+    this.load.image("recordsBtn", recordsBtn);
     this.load.audio("sndBtnOver", sndBtnOver);
     this.load.audio("sndBtnDown", sndBtnDown);
     this.load.audio("song", song);
@@ -47,25 +41,38 @@ class SceneMainMenu extends Phaser.Scene {
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      "sprBtnPlay"
+      "playBtn"
+    );
+
+    this.btnLeader = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.7,
+      "recordsBtn"
+    );
+
+    this.btnAbout = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.9,
+      "aboutBtn"
     );
 
     this.btnPlay.on(
       "pointerover",
       function () {
-        this.btnPlay.setTexture("sprBtnPlayHover");
+        this.btnPlay.setTexture("playBtn");
         this.sfx.btnOver.play();
       },
       this
     );
     this.btnPlay.on("pointerout", function () {
-      this.setTexture("sprBtnPlay");
+      this.btnPlay.setTexture("playBtn");
+      this.setTexture("playBtn");
     });
 
     this.btnPlay.on(
       "pointerdown",
       function () {
-        this.btnPlay.setTexture("sprBtnPlayDown");
+        this.btnPlay.setTexture("playBtn");
         this.sfx.btnDown.play();
       },
       this
@@ -73,8 +80,24 @@ class SceneMainMenu extends Phaser.Scene {
     this.btnPlay.on(
       "pointerup",
       function () {
-        this.btnPlay.setTexture("sprBtnPlay");
+        this.btnPlay.setTexture("playBtn");
         this.scene.start("SceneMain");
+      },
+      this
+    );
+
+    this.btnLeader.on(
+      "pointerup",
+      function () {
+        this.scene.start("SceneLeaderBoard");
+      },
+      this
+    );
+
+    this.btnAbout.on(
+      "pointerup",
+      function () {
+        this.scene.start("SceneAbout");
       },
       this
     );
@@ -93,7 +116,12 @@ class SceneMainMenu extends Phaser.Scene {
     );
     this.title.setOrigin(0.5);
 
+    this.btnPlay.setScale(0.5);
+    this.btnLeader.setScale(0.5);
+    this.btnAbout.setScale(0.5);
     this.btnPlay.setInteractive();
+    this.btnLeader.setInteractive();
+    this.btnAbout.setInteractive();
 
     this.backgrounds = [];
     for (var i = 0; i < 5; i++) {
