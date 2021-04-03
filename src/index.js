@@ -4,10 +4,11 @@ import SceneMainMenu from "./js/SceneMainMenu";
 import SceneMain from "./js/SceneMain";
 import SceneGameOver from "./js/SceneGameOver";
 import SceneLeaderBoard from "./js/SceneLeaderBoard";
+import SceneAbout from "./js/SceneAbout";
 
 var config = {
   type: Phaser.WEBGL,
-  parent: "divld",
+  parent: "wrapper",
   width: 480,
   height: 640,
   backgroundColor: "black",
@@ -20,7 +21,13 @@ var config = {
       gravity: { x: 0, y: 0 },
     },
   },
-  scene: [SceneMainMenu, SceneMain, SceneGameOver, SceneLeaderBoard],
+  scene: [
+    SceneMainMenu,
+    SceneMain,
+    SceneGameOver,
+    SceneLeaderBoard,
+    SceneAbout,
+  ],
   pixelArt: true,
   roundPixels: true,
 };
