@@ -37,7 +37,7 @@ class SceneLeaderBoard extends Phaser.Scene {
     );
 
     this.btnMain = this.add.sprite(
-      this.game.config.width * 0.7,
+      this.game.config.width * 0.75,
       this.game.config.height * 0.925,
       "mainPage"
     );
