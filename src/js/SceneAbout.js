@@ -45,7 +45,7 @@ class SceneAbout extends Phaser.Scene {
     );
 
     this.btnLeader = this.add.sprite(
-      this.game.config.width * 0.7,
+      this.game.config.width * 0.75,
       this.game.config.height * 0.9,
       "mainPage"
     );
@@ -114,6 +114,17 @@ class SceneAbout extends Phaser.Scene {
       var bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);
     }
+
+    const aboutBox = document.createElement("aboutBox");
+
+    aboutBox.innerHTML = `
+    <div>
+     <p class='about-text'>This is a Shooter game which is built by Murodjon Tursunpulatov with Phaser for the Microverse JavaScript Capstone project.</p>
+
+    </div>
+    `;
+
+    this.add.dom(this.game.config.width * 0.5, 200, aboutBox);
   }
 
   update() {
