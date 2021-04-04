@@ -8,6 +8,8 @@ import sprBtnRestart from "../files/restrat.png";
 
 import sprBg0 from "../files/sprBg0.png";
 import sprBg1 from "../files/sprBg1.png";
+import gameOverT from "../files/game-over.png";
+import records from "../files/records.png";
 
 import sndBtnOver from "../files/sndBtnOver.mp3";
 import sndBtnDown from "../files/sndBtnDown.mp3";
@@ -23,6 +25,8 @@ class SceneGameOver extends Phaser.Scene {
     this.load.image("sprBtnRestart", sprBtnRestart);
     this.load.audio("sndBtnOver", sndBtnOver);
     this.load.audio("sndBtnDown", sndBtnDown);
+    this.load.image("gameOverT", gameOverT);
+    this.load.image("records", records);
   }
 
   create() {
@@ -32,9 +36,20 @@ class SceneGameOver extends Phaser.Scene {
     };
 
     this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.width * 0.25,
+      this.game.config.height * 0.8,
       "sprBtnRestart"
+    );
+    this.btnGameOverT = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.2,
+      "gameOverT"
+    );
+
+    this.btnRecords = this.add.sprite(
+      this.game.config.width * 0.75,
+      this.game.config.height * 0.8,
+      "records"
     );
 
     this.btnRestart.on(
@@ -66,6 +81,15 @@ class SceneGameOver extends Phaser.Scene {
       this
     );
 
+    this.btnRecords.on(
+      "pointerup",
+      function () {
+        this.btnRestart.setTexture("records");
+        this.scene.start("SceneLeaderBoard");
+      },
+      this
+    );
+
     this.scores = getLocalScore();
     this.scoreScene = this.add.text(
       this.game.config.width * 0.025,
@@ -78,16 +102,10 @@ class SceneGameOver extends Phaser.Scene {
         lineHeight: 1.3,
       }
     );
-
-    this.title = this.add.text(this.game.config.width * 0.5, 128, "GAME OVER", {
-      fontFamily: "monospace",
-      fontSize: 60,
-      fontStyle: "bold",
-      color: "#ffffff",
-      align: "center",
-    });
-    this.title.setOrigin(0.5);
+    this.btnRestart.setScale(0.4);
     this.btnRestart.setInteractive();
+    this.btnRecords.setScale(0.4);
+    this.btnRecords.setInteractive();
 
     this.backgrounds = [];
     for (var i = 0; i < 5; i++) {
@@ -101,13 +119,17 @@ class SceneGameOver extends Phaser.Scene {
 
     const div = document.createElement("div");
     div.innerHTML = `
-    <input type='text' id='name' placeholder='Enter your name' style= 'font-size:1.5rem width: ${
-      this.game.config.width * 0.25
-    }/'</br>
-    <input type='button' name='submitBtn' value='Submit Score' style='font-size:1.5rem'/>
+    <div class='input-box'>
+    <input type='text' id='name' placeholder='Enter your name'/'</br>
+    <input type='button' name='submitBtn' value='Submit Score' />
+    </div>
     `;
 
-    const element = this.add.dom(280, 480, div);
+    const element = this.add.dom(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      div
+    );
     element.addListener("click");
 
     element.on("click", (event) => {
