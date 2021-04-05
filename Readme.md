@@ -8,23 +8,23 @@ This project's objective was to build a shooter game similar to [York Computer's
 
 ## Game
 
-This is a simple endless runner. Enemies appear at the top of the canvas Some shoot you, some pass straight, some pursue you. You control your ship with keyboard arrows while you shoot with space. Just destroy as many enemies as you can before your you die.
+This is a simple endless runner. Enemies appear at the top of the canvas Some shoot you, some pass straight, some pursue you. You control your ship with keyboard **arrows** while you shoot with **space**. Just destroy as many enemies as you can before your you die.
 
 In the end, you can add your name to our Leader Board and check the high scores.
 
 # How to play
 
-The commands were explained in the previous section [](./arrow.jpg) to move [](./space-key.png) to shoot.
+The commands were explained in the previous section []('./arrow.jpg') to move []('./space-key.png') to shoot.
 
 You can play the game online clicking [here]() or locally following these steps:
 
--Click on the green button "Clone or Download"
--Click on Download ZIP
--Extract the game
--In your terminal, navigate to the game's folder
--Run `npm install` then `npm start` to start the sersver
--Open, in your browser, 'localhost:8080'
--Beat my record and make my name disappear from the Leader Board
+- Click on the green button "Clone or Download"
+- Click on Download ZIP
+- Extract the game
+- In your terminal, navigate to the game's folder
+- Run `npm install` then `npm start` to start the sersver
+- Open, in your browser, 'localhost:8080'
+- Beat my record and make my name disappear from the Leader Board
 
 ## Live Demo
 
@@ -44,7 +44,7 @@ You can play the game online clicking [here]() or locally following these steps:
 
 ## Getting Started
 
-- Clone the repo `git@github.com:Murodjon000/weather-js.git`
+- Clone the repo `git@github.com:Murodjon000/shooter-game.git`
 - cd `into` the project
 - Run `git pull origin app`
 - Run `yarn install` or `npm install` to install dependencies
@@ -70,7 +70,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgements
 
--[Microverse](https://www.microverse.org/) -[OpenGameArt](https://opengameart.org/) -[York Computer's](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)
+- [Microverse](https://www.microverse.org/)
+- [OpenGameArt](https://opengameart.org/)
+- [York Computer's](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)
 
 ## 📝 License
 
