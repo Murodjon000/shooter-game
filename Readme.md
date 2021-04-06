@@ -18,7 +18,7 @@ In the end, you can add your name to our **Leaders Board** and check the high sc
 
 The commands were explained in the previous section ![](./arrow.jpg) to move ![](./space-key.png) to shoot.
 
-You can play the game online clicking [here]() or locally following these steps:
+You can play the game online clicking [here](https://galaxy-wars.netlify.app/) or locally following these steps:
 
 - Click on the green button "Clone or Download"
 - Click on Download ZIP
@@ -30,7 +30,7 @@ You can play the game online clicking [here]() or locally following these steps:
 
 ## Live Demo
 
-- [live-version](https://weather-app-murod.netlify.app/)
+- [Galaxy-wars](https://galaxy-wars.netlify.app/)
 
 ## Built with
 
