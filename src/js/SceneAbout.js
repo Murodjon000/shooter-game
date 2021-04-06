@@ -37,7 +37,6 @@ class SceneAbout extends Phaser.Scene {
       song: this.sound.add('song'),
     };
 
-    // this.sfx.song.play();
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.25,
       this.game.config.height * 0.9,

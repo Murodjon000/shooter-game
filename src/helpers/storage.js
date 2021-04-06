@@ -8,7 +8,7 @@ const getLocalScore = () => {
   let result = JSON.parse(score);
 
   if (result === null) {
-    result = [0, 0];
+    result = [1, 1];
     localScore(result);
   }
 
