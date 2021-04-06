@@ -18,6 +18,7 @@ import sprPlayer from "../files/sprPlayer.png";
 import sndExplode0 from "../files/sndExplode0.mp3";
 import sndExplode1 from "../files/sndExplode1.mp3";
 import sndLaser from "../files/sndLaser.mp3";
+import song from "../files/spacetheme.mp3";
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -53,9 +54,12 @@ class SceneMain extends Phaser.Scene {
     this.load.audio("sndExplode0", sndExplode0);
     this.load.audio("sndExplode1", sndExplode1);
     this.load.audio("sndLaser", sndLaser);
+    this.load.audio("song", song);
   }
 
   create() {
+    this.song = this.sound.add("song", { volume: 0.1 });
+    this.song.play();
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),

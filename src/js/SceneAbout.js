@@ -90,18 +90,13 @@ class SceneAbout extends Phaser.Scene {
       this
     );
 
-    this.title = this.add.text(
-      this.game.config.width * 0.5,
-      128,
-      "ABOUT PAGE",
-      {
-        fontFamily: "monospace",
-        fontSize: 48,
-        fontStyle: "bold",
-        color: "#ffffff",
-        align: "center",
-      }
-    );
+    this.title = this.add.text(this.game.config.width * 0.5, 128, "ABOUT", {
+      fontFamily: "monospace",
+      fontSize: 48,
+      fontStyle: "bold",
+      color: "#ffffff",
+      align: "center",
+    });
     this.title.setOrigin(0.5);
 
     this.btnPlay.setInteractive();
@@ -118,13 +113,20 @@ class SceneAbout extends Phaser.Scene {
     const aboutBox = document.createElement("aboutBox");
 
     aboutBox.innerHTML = `
-    <div>
+    <div class='aboutBox'>
      <p class='about-text'>This is a Shooter game which is built by Murodjon Tursunpulatov with Phaser for the Microverse JavaScript Capstone project.</p>
+     <p class='about-text'>If you have any questions about the game.You can find me from these links.</p>
+     <div class='info-links'>
+     <a href='https://github.com/Murodjon000' target='_blank'><i class='fa fa-github'></i></a>
+     <a href='https://www.linkedin.com/in/murodjon-tursunpulatov-5189481b3/' target='_blank'><i class='fa fa-linkedin mx-4'></i></a>
+     <a href='https://twitter.com/MurodjonTursun5' target='_blank'><i class='fa fa-twitter'></i></a>
+     </div>
+     <p class='about-text'><a href='https://phaser.io/' target='_blank' >Phaser</a> is an amazing framework in order to build like this game with high efficiency without losing your time.</p>
 
     </div>
     `;
 
-    this.add.dom(this.game.config.width * 0.5, 200, aboutBox);
+    this.add.dom(this.game.config.width * 0.5, 250, aboutBox);
   }
 
   update() {

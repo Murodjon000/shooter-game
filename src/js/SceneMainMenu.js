@@ -6,13 +6,13 @@ import sprBg1 from "../files/sprBg1.png";
 import playBtn from "../files/play.png";
 import aboutBtn from "../files/about.png";
 import recordsBtn from "../files/records.png";
-
+import galaxy from "../files/galaxy-1.png";
 //Sounds
 
 import sndBtnOver from "../files/sndBtnOver.mp3";
 import sndBtnDown from "../files/sndBtnDown.mp3";
 
-import song from "../files/spacetheme.mp3";
+import song from "../files/main-song.mp3";
 
 class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -28,16 +28,17 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.audio("sndBtnOver", sndBtnOver);
     this.load.audio("sndBtnDown", sndBtnDown);
     this.load.audio("song", song);
+    this.load.image("galaxy", galaxy);
   }
 
   create() {
     this.sfx = {
       btnOver: this.sound.add("sndBtnOver"),
       btnDown: this.sound.add("sndBtnDown"),
-      song: this.sound.add("song"),
+      song: this.sound.add("song", { volume: 0.1 }),
     };
 
-    // this.sfx.song.play();
+    this.sfx.song.play();
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
@@ -81,6 +82,7 @@ class SceneMainMenu extends Phaser.Scene {
       "pointerup",
       function () {
         this.btnPlay.setTexture("playBtn");
+        this.sfx.song.stop();
         this.scene.start("SceneMain");
       },
       this
@@ -89,6 +91,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.btnLeader.on(
       "pointerup",
       function () {
+        this.sfx.song.stop();
         this.scene.start("SceneLeaderBoard");
       },
       this
@@ -97,23 +100,13 @@ class SceneMainMenu extends Phaser.Scene {
     this.btnAbout.on(
       "pointerup",
       function () {
+        this.sfx.song.stop();
         this.scene.start("SceneAbout");
       },
       this
     );
 
-    this.title = this.add.text(
-      this.game.config.width * 0.5,
-      128,
-      "SPACE SHOOTER",
-      {
-        fontFamily: "monospace",
-        fontSize: 48,
-        fontStyle: "bold",
-        color: "#ffffff",
-        align: "center",
-      }
-    );
+    this.title = this.add.sprite(this.game.config.width * 0.52, 128, "galaxy");
     this.title.setOrigin(0.5);
 
     this.btnPlay.setScale(0.5);

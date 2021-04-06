@@ -1,5 +1,7 @@
 ## JavaScript Capstone Project: Build a Shooter Game
 
+![Galaxy Wars](./wars.jpg)
+
 In this project, I build a shooter game using JavaScript's framework [Phaser 3](https://phaser.io/), a "fast, free and fun open-source framework for Canvas and WebGL powered browser games".
 
 ## About
@@ -12,9 +14,9 @@ This is a simple endless runner. Enemies appear at the top of the canvas Some sh
 
 In the end, you can add your name to our Leader Board and check the high scores.
 
-# How to play
+## How to play
 
-The commands were explained in the previous section []('./arrow.jpg') to move []('./space-key.png') to shoot.
+The commands were explained in the previous section ![](./arrow.jpg) to move ![](./space-key.png) to shoot.
 
 You can play the game online clicking [here]() or locally following these steps:
 
@@ -23,12 +25,12 @@ You can play the game online clicking [here]() or locally following these steps:
 - Extract the game
 - In your terminal, navigate to the game's folder
 - Run `npm install` then `npm start` to start the sersver
-- Open, in your browser, 'localhost:8080'
+- Open, in your browser, `localhost:8080`
 - Beat my record and make my name disappear from the Leader Board
 
 ## Live Demo
 
--[live-version](https://weather-app-murod.netlify.app/)
+- [live-version](https://weather-app-murod.netlify.app/)
 
 ## Built with
 
