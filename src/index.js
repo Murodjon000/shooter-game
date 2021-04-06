@@ -1,22 +1,22 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
-import SceneMainMenu from "./js/SceneMainMenu";
-import SceneMain from "./js/SceneMain";
-import SceneGameOver from "./js/SceneGameOver";
-import SceneLeaderBoard from "./js/SceneLeaderBoard";
-import SceneAbout from "./js/SceneAbout";
+import SceneMainMenu from './js/SceneMainMenu';
+import SceneMain from './js/SceneMain';
+import SceneGameOver from './js/SceneGameOver';
+import SceneLeaderBoard from './js/SceneLeaderBoard';
+import SceneAbout from './js/SceneAbout';
 
-var config = {
+const config = {
   type: Phaser.WEBGL,
-  parent: "wrapper",
+  parent: 'wrapper',
   width: 480,
   height: 640,
-  backgroundColor: "black",
+  backgroundColor: 'black',
   dom: {
     createContainer: true,
   },
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
       gravity: { x: 0, y: 0 },
     },
@@ -32,4 +32,5 @@ var config = {
   roundPixels: true,
 };
 
-var game = new Phaser.Game(config);
+// eslint-disable-next-line no-unused-vars
+const game = new Phaser.Game(config);

@@ -12,7 +12,7 @@ This project's objective was to build a shooter game similar to [York Computer's
 
 This is a simple endless runner. Enemies appear at the top of the canvas Some shoot you, some pass straight, some pursue you. You control your ship with keyboard **arrows** while you shoot with **space**. Just destroy as many enemies as you can before your you die.
 
-In the end, you can add your name to our Leader Board and check the high scores.
+In the end, you can add your name to our **Leaders Board** and check the high scores.**Leaders Board** only show top 5 scores if you beat all scores your score will be on top of other 4 scores.
 
 ## How to play
 

@@ -1,12 +1,12 @@
-import { localScore, getLocalScore, storeScores } from "./storage_mock";
+import { localScore, getLocalScore, storeScores } from './storage_mock';
 
-test("should be like this array [0,0] ", () => {
+test('should be like this array [0,0] ', () => {
   const data = getLocalScore();
   expect(data[0]).toBe(0);
   expect(data[1]).toBe(0);
 });
 
-test("should store the array and show it", () => {
+test('should store the array and show it', () => {
   const data = [100, 200];
   localScore(data);
   const scores = getLocalScore();
@@ -15,7 +15,7 @@ test("should store the array and show it", () => {
   expect(scores[0]).toBe(100);
 });
 
-test("should store scores", () => {
+test('should store scores', () => {
   const scores = [10, 20, 600];
   localScore(scores);
   scores[0] = 3500;

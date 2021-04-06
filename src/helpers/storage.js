@@ -1,10 +1,10 @@
 const localScore = (score) => {
   const scoreJson = JSON.stringify(score);
-  localStorage.setItem("scores", scoreJson);
+  localStorage.setItem('scores', scoreJson);
 };
 
 const getLocalScore = () => {
-  const score = localStorage.getItem("scores");
+  const score = localStorage.getItem('scores');
   let result = JSON.parse(score);
 
   if (result === null) {

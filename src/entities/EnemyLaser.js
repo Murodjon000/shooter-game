@@ -1,8 +1,8 @@
-import Entity from "../js/Entities";
+import Entity from '../js/Entities';
 
 class EnemyLaser extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, "sprLaserEnemy0");
+    super(scene, x, y, 'sprLaserEnemy0');
 
     this.body.velocity.y = 200;
   }
