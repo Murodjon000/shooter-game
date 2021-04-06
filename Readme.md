@@ -6,7 +6,7 @@ In this project, I build a shooter game using JavaScript's framework [Phaser 3](
 
 ## About
 
-This project's objective was to build a shooter game similar to [York Computer's](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/) tutorial. So I used the main idea but I created my own Battle for Space.
+This project's objective was to build a shooter game similar to [York Computer's](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/) tutorial. So I used the main idea but I created my own Galaxy Wars shooter game.
 
 ## Game
 
